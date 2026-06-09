@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הגש מועמדות — כלומיון</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700;900&family=Heebo:wght@300;400;700&display=swap');
+  :root { --bg:#F7F4EE; --ink:#1A1A18; --muted:#6B6860; --accent:#C8392B; --border:#D4CFC4; --white:#FFFFFF; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:'Heebo',sans-serif; font-size:16px; line-height:1.7; }
+  header { border-bottom:1px solid var(--border); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; background:var(--white); }
+  .logo { font-family:'Frank Ruhl Libre',serif; font-weight:900; font-size:22px; color:var(--ink); text-decoration:none; }
+  .logo span { color:var(--accent); }
+  nav a { font-size:13px; color:var(--muted); text-decoration:none; margin-right:2rem; }
+  .main { max-width:700px; margin:4rem auto; padding:0 2rem; }
+  h1 { font-family:'Frank Ruhl Libre',serif; font-size:52px; font-weight:900; line-height:1; margin-bottom:1rem; }
+  .subtitle { color:var(--muted); font-size:16px; margin-bottom:3rem; }
+  .q-block { margin-bottom:2rem; }
+  .q-label { font-size:13px; font-weight:700; margin-bottom:4px; display:block; }
+  .q-hint { font-size:12px; color:var(--muted); margin-bottom:8px; display:block; }
+  input, select, textarea { width:100%; padding:12px 16px; border:1px solid var(--border); background:var(--white); font-family:'Heebo',sans-serif; font-size:14px; color:var(--ink); }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--ink); }
+  textarea { height:100px; resize:none; }
+  .options { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .opt { padding:12px 16px; border:1px solid var(--border); background:var(--white); cursor:pointer; font-size:13px; text-align:right; }
+  .opt:hover, .opt.selected { background:var(--ink); color:var(--white); border-color:var(--ink); }
+  .btn { background:var(--ink); color:var(--white); padding:14px 32px; font-size:15px; font-family:'Heebo',sans-serif; border:none; cursor:pointer; margin-top:1rem; }
+  .divider { border:none; border-top:1px solid var(--border); margin:3rem 0; }
+  footer { border-top:1px solid var(--border); padding:2rem; font-size:12px; color:var(--muted); text-align:center; margin-top:4rem; }
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html">כלו<span>מיון</span></a>
+  <nav>
+    <a href="index.html">בית</a>
+    <a href="agafim.html">האגפים</a>
+  </nav>
+</header>
+
+<div class="main">
+  <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">תהליך קבלה רשמי</p>
+  <h1>הגש<br>מועמדות</h1>
+  <p class="subtitle">כלומיון מחפשת אנשים שמוכנים לעבוד על דברים שמטרתם לא ברורה. ועדת הקבלה תחזור אליך תוך 2-4 ספרינטים, בתנאי שאגף ה-HR לא בדאון-טיים.</p>
+
+  <hr class="divider">
+
+  <form onsubmit="return handleSubmit(event)">
+
+    <div class="q-block">
+      <label class="q-label">שם מלא</label>
+      <span class="q-hint">כפי שיופיע בטיקטים ובדוחות הישיבה</span>
+      <input type="text" placeholder="השם שלך" required />
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">תאר את עצמך בשלושה באגים</label>
+      <span class="q-hint">לא בהכרח קוד. אישיות מתקבלת בברכה.</span>
+      <textarea placeholder="לדוגמה: מגיע מאוחר לדיילי, שוכח לעשות קומיט, חושב שמצא את הבאג אבל זה תמיד שורה אחרת..."></textarea>
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">הפרודקשן נפל ב-3 בלילה. מה אתה עושה קודם?</label>
+      <div class="options">
+        <div class="opt" onclick="select(this)">מתקן</div>
+        <div class="opt" onclick="select(this)">מחפש מי אשם</div>
+        <div class="opt" onclick="select(this)">עושה רולבק ומתפלל</div>
+        <div class="opt" onclick="select(this)">מתעלם ומקווה שיעבור</div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">לאיזה אגף אתה מעוניין להצטרף?</label>
+      <span class="q-hint">אם האגף לא קיים עדיין — ייתכן שתקים אותו</span>
+      <select>
+        <option value="">בחר אגף</option>
+        <option>אגף משפט</option>
+        <option>אגף גרביים מלאות שעועית לבנה</option>
+        <option>אגף חיפוש האנושות</option>
+        <option>אגף הפרות הירוקות</option>
+        <option>אגף ארך אפיים</option>
+        <option>אגף מצרים העתידית</option>
+        <option>אגף קקי של פרות שאכלו פירות שנפלו מהפולחן</option>
+        <option>אגף שלא קיים עדיין (אני אקים אותו)</option>
+      </select>
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">כמה ספרינטים לדעתך יקח לבנות את כלומיון?</label>
+      <span class="q-hint">אין תשובה נכונה. יש רק תשובה אופטימית מדי.</span>
+      <input type="text" placeholder="הערכה שלך..." />
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">למה כלומיון?</label>
+      <span class="q-hint">אין תשובה נכונה. יש רק תשובה אמיתית.</span>
+      <textarea placeholder="כי..."></textarea>
+    </div>
+
+    <button type="submit" class="btn">שלח מועמדות לוועדת הקבלה</button>
+  </form>
+</div>
+
+<footer>
+  © כלומיון — אגף הזכויות (בבנייה) · ועדת הקבלה מתכנסת כשיש קוורום
+</footer>
+
+<script>
+function select(el) {
+  el.closest('.options').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('המועמדות התקבלה בהצלחה.\n\nועדת הקבלה תחזור אליך תוך 2-4 ספרינטים.\nבינתיים, קרא את ויקיפדיה ההייטק הישראלי:\nhttps://chelmerebe.github.io/hitech-wiki/');
+  return false;
+}
+</script>
+</body>
+</html>
