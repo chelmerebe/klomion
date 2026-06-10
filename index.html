@@ -6,554 +6,232 @@
 <title>כלומיון — תאגיד הפתרונות הכוללים</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700;900&family=Heebo:wght@300;400;700&display=swap');
-
-  :root {
-    --bg: #F7F4EE;
-    --ink: #1A1A18;
-    --muted: #6B6860;
-    --accent: #C8392B;
-    --border: #D4CFC4;
-    --white: #FFFFFF;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Heebo', sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  /* HEADER */
-  header {
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    background: var(--white);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .logo {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 900;
-    font-size: 22px;
-    letter-spacing: -0.5px;
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .logo span { color: var(--accent); }
-
-  nav { display: flex; gap: 2rem; }
-  nav a {
-    font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.3px;
-  }
-  nav a:hover { color: var(--ink); }
-
-  /* HERO */
-  .hero {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem;
-    text-align: center;
-  }
-
-  .hero-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 900;
-    font-size: clamp(48px, 8vw, 90px);
-    line-height: 1;
-    letter-spacing: -2px;
-    margin-bottom: 1.5rem;
-    color: var(--ink);
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  .hero p {
-    font-size: 18px;
-    color: var(--muted);
-    max-width: 560px;
-    margin: 0 auto 2.5rem;
-    font-weight: 300;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--white);
-    padding: 12px 28px;
-    font-size: 14px;
-    font-family: 'Heebo', sans-serif;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    letter-spacing: 0.3px;
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--ink);
-    padding: 12px 28px;
-    font-size: 14px;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    letter-spacing: 0.3px;
-  }
-
-  /* TICKER */
-  .ticker {
-    background: var(--ink);
-    color: var(--white);
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
-  .ticker-inner {
-    display: inline-block;
-    animation: scroll 30s linear infinite;
-  }
-
-  .ticker-inner span { margin: 0 3rem; opacity: 0.6; }
-  .ticker-inner span.highlight { opacity: 1; color: var(--accent); }
-
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* STATS */
-  .stats {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .stat {
-    padding: 2.5rem 2rem;
-    border-left: 1px solid var(--border);
-    text-align: center;
-  }
-
-  .stat:last-child { border-right: 1px solid var(--border); }
-
-  .stat-number {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 42px;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-  }
-
-  /* DEPARTMENTS */
-  .departments {
-    max-width: 900px;
-    margin: 5rem auto;
-    padding: 0 2rem;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .section-title {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 28px;
-    font-weight: 700;
-  }
-
-  .section-note {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .dept-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1px solid var(--border);
-  }
-
-  .dept-item {
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-    text-decoration: none;
-    color: var(--ink);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    transition: background 0.1s;
-    position: relative;
-  }
-
-  .dept-item:hover { background: var(--white); }
-
-  .dept-item.broken { color: var(--muted); }
-  .dept-item.broken::after {
-    content: '×';
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    font-size: 10px;
-    color: var(--accent);
-  }
-
-  .dept-name {
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .dept-desc {
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .dept-item.featured {
-    background: var(--ink);
-    color: var(--white);
-  }
-
-  .dept-item.featured .dept-desc { color: rgba(255,255,255,0.5); }
-  .dept-item.featured:hover { background: #2a2a28; }
-
-  /* MISSION */
-  .mission {
-    background: var(--white);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 5rem 2rem;
-    text-align: center;
-  }
-
-  .mission blockquote {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: clamp(22px, 4vw, 36px);
-    font-weight: 400;
-    max-width: 700px;
-    margin: 0 auto 1.5rem;
-    line-height: 1.4;
-    color: var(--ink);
-  }
-
-  .mission cite {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-style: normal;
-  }
-
-  /* JOIN */
-  .join {
-    max-width: 900px;
-    margin: 5rem auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .join-text h2 {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 36px;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-
-  .join-text p {
-    color: var(--muted);
-    font-size: 15px;
-    margin-bottom: 1.5rem;
-  }
-
-  .join-form { display: flex; flex-direction: column; gap: 1rem; }
-
-  .join-form input,
-  .join-form select {
-    padding: 12px 16px;
-    border: 1px solid var(--border);
-    background: var(--white);
-    font-family: 'Heebo', sans-serif;
-    font-size: 14px;
-    color: var(--ink);
-    width: 100%;
-  }
-
-  .join-form input:focus,
-  .join-form select:focus {
-    outline: none;
-    border-color: var(--ink);
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  /* ERROR MESSAGE */
-  .error-banner {
-    background: var(--accent);
-    color: white;
-    text-align: center;
-    padding: 8px;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-  }
-
-  @media (max-width: 700px) {
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .dept-grid { grid-template-columns: repeat(2, 1fr); }
-    .join { grid-template-columns: 1fr; gap: 2rem; }
-    nav { display: none; }
-  }
+  :root { --bg:#F7F4EE; --ink:#1A1A18; --muted:#6B6860; --accent:#C8392B; --border:#D4CFC4; --white:#FFFFFF; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:'Heebo',sans-serif; font-size:16px; line-height:1.7; }
+  header { border-bottom:1px solid var(--border); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; background:var(--white); position:sticky; top:0; z-index:100; }
+  .logo { font-family:'Frank Ruhl Libre',serif; font-weight:900; font-size:22px; color:var(--ink); text-decoration:none; }
+  .logo span { color:var(--accent); }
+  nav a { font-size:13px; color:var(--muted); text-decoration:none; margin-right:2rem; }
+  nav a:hover { color:var(--ink); }
+  .ticker { background:var(--ink); color:var(--white); padding:10px 0; overflow:hidden; white-space:nowrap; font-size:12px; letter-spacing:1px; }
+  .ticker-inner { display:inline-block; animation:scroll 30s linear infinite; }
+  .ticker-inner span { margin:0 3rem; opacity:0.6; }
+  .ticker-inner span.hl { opacity:1; color:#f87171; }
+  @keyframes scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  .hero { max-width:900px; margin:0 auto; padding:6rem 2rem 4rem; text-align:center; }
+  .hero-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+  .hero h1 { font-family:'Frank Ruhl Libre',serif; font-weight:900; font-size:clamp(48px,8vw,90px); line-height:1; letter-spacing:-2px; margin-bottom:1.5rem; }
+  .hero h1 em { font-style:normal; color:var(--accent); }
+  .hero p { font-size:18px; color:var(--muted); max-width:560px; margin:0 auto 2.5rem; font-weight:300; }
+  .hero-cta { display:inline-flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+  .btn-primary { background:var(--ink); color:var(--white); padding:12px 28px; font-size:14px; font-family:'Heebo',sans-serif; text-decoration:none; border:none; cursor:pointer; }
+  .btn-secondary { background:transparent; color:var(--ink); padding:12px 28px; font-size:14px; text-decoration:none; border:1px solid var(--border); }
+  .stats { border-top:1px solid var(--border); border-bottom:1px solid var(--border); display:grid; grid-template-columns:repeat(4,1fr); max-width:900px; margin:0 auto; }
+  .stat { padding:2.5rem 2rem; border-left:1px solid var(--border); text-align:center; }
+  .stat:last-child { border-right:1px solid var(--border); }
+  .stat-number { font-family:'Frank Ruhl Libre',serif; font-size:42px; font-weight:900; line-height:1; margin-bottom:4px; }
+  .stat-label { font-size:12px; color:var(--muted); }
+  .departments { max-width:900px; margin:5rem auto; padding:0 2rem; }
+  .section-header { display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:1rem; margin-bottom:2rem; }
+  .section-title { font-family:'Frank Ruhl Libre',serif; font-size:28px; font-weight:700; }
+  .section-note { font-size:12px; color:var(--muted); }
+  .dept-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); }
+  .dept-item { padding:1.25rem 1.5rem; border-bottom:1px solid var(--border); border-left:1px solid var(--border); text-decoration:none; color:var(--ink); display:flex; flex-direction:column; gap:4px; transition:background 0.1s; }
+  .dept-item:hover { background:var(--white); }
+  .dept-name { font-size:14px; font-weight:700; }
+  .dept-desc { font-size:11px; color:var(--muted); }
+  .mission { background:var(--white); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:5rem 2rem; text-align:center; }
+  .mission blockquote { font-family:'Frank Ruhl Libre',serif; font-size:clamp(22px,4vw,36px); max-width:700px; margin:0 auto 1.5rem; line-height:1.4; }
+  .mission cite { font-size:12px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-style:normal; }
+  .join { max-width:900px; margin:5rem auto; padding:0 2rem; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+  .join-text h2 { font-family:'Frank Ruhl Libre',serif; font-size:36px; font-weight:900; line-height:1.1; margin-bottom:1rem; }
+  .join-text p { color:var(--muted); font-size:15px; margin-bottom:1.5rem; }
+  .join-form { display:flex; flex-direction:column; gap:1rem; }
+  .join-form input, .join-form select { padding:12px 16px; border:1px solid var(--border); background:var(--white); font-family:'Heebo',sans-serif; font-size:14px; color:var(--ink); width:100%; }
+  footer { border-top:1px solid var(--border); padding:2rem; display:flex; justify-content:space-between; font-size:12px; color:var(--muted); }
+  .error-banner { background:var(--accent); color:white; text-align:center; padding:8px; font-size:12px; }
+  @media(max-width:700px) { .stats { grid-template-columns:repeat(2,1fr); } .dept-grid { grid-template-columns:repeat(2,1fr); } .join { grid-template-columns:1fr; gap:2rem; } nav { display:none; } }
 </style>
 </head>
 <body>
-
-<div class="error-banner">
-  ⚠ אגף חיפוש האנושות מדווח על תקלה זמנית — צוות חיפוש כדור הארץ טרם חזר מהמשימה
-</div>
-
+<div class="error-banner">⚠ אגף חיפוש האנושות מדווח על תקלה זמנית — צוות חיפוש כדור הארץ טרם חזר מהמשימה</div>
 <header>
   <a class="logo" href="#">כלו<span>מיון</span></a>
   <nav>
-    <a href="agafim.html">האגפים</a>
+    <a href="#agafim">האגפים</a>
     <a href="careers.html">הגש מועמדות</a>
-    <a href="about.html">אודות (בבנייה)</a>
-    <a href="#broken">צור קשר</a>
   </nav>
 </header>
-
 <div class="ticker">
   <div class="ticker-inner">
     <span>אגף חיפוש האנושות — ממשיכים לחפש</span>
-    <span class="highlight">עדכון דחוף: אגף הפרות הירוקות אינו קשור לאגף הפרות הכחולות</span>
+    <span class="hl">עדכון דחוף: אגף הפרות הירוקות אינו קשור לאגף הפרות הכחולות</span>
     <span>ישיבת תיאום — אגף ארך אפיים עם אגף שמני העיסוי — נדחתה</span>
-    <span class="highlight">כלומיון מחפשת כ-300 עובדים לאגפים שטרם הוגדרו</span>
+    <span class="hl">כלומיון מחפשת כ-300 עובדים לאגפים שטרם הוגדרו</span>
     <span>אגף הלינקים השבורים מדווח על תפקוד תקין</span>
     <span>אגף חיפוש האנושות — ממשיכים לחפש</span>
-    <span class="highlight">עדכון דחוף: אגף הפרות הירוקות אינו קשור לאגף הפרות הכחולות</span>
+    <span class="hl">עדכון דחוף: אגף הפרות הירוקות אינו קשור לאגף הפרות הכחולות</span>
     <span>ישיבת תיאום — אגף ארך אפיים עם אגף שמני העיסוי — נדחתה</span>
-    <span class="highlight">כלומיון מחפשת כ-300 עובדים לאגפים שטרם הוגדרו</span>
+    <span class="hl">כלומיון מחפשת כ-300 עובדים לאגפים שטרם הוגדרו</span>
     <span>אגף הלינקים השבורים מדווח על תפקוד תקין</span>
   </div>
 </div>
-
 <section class="hero">
   <p class="hero-label">תאגיד הפתרונות הכוללים — מייסוד תשפ"ה</p>
   <h1>כלומיון<br><em>עוסקים בהכל.</em><br>מבינים פחות.</h1>
-  <p>חברת הייטק המובילה בתחום הדברים הכלליים, הספציפיים, והאחרים. עם 58 אגפים פעילים ועוד 182 שנמצאים בשלב האפיון.</p>
+  <p>חברת הייטק המובילה בתחום הדברים הכלליים, הספציפיים, והאחרים. עם 27 אגפים פעילים ועוד מאות שנמצאים בשלב האפיון.</p>
   <div class="hero-cta">
     <a href="careers.html" class="btn-primary">הגש מועמדות עכשיו</a>
-    <a href="agafim.html" class="btn-secondary">כל האגפים</a>
+    <a href="#agafim" class="btn-secondary">כל האגפים</a>
   </div>
 </section>
-
 <div class="stats">
-  <div class="stat">
-    <div class="stat-number">240+</div>
-    <div class="stat-label">אגפים ותת-אגפים</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">0</div>
-    <div class="stat-label">לקוחות מרוצים מאושרים</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">∞</div>
-    <div class="stat-label">ישיבות שלא הגיעו למסקנה</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">3</div>
-    <div class="stat-label">פרות שעברו לאגף הקבלה</div>
-  </div>
+  <div class="stat"><div class="stat-number">27</div><div class="stat-label">אגפים פעילים</div></div>
+  <div class="stat"><div class="stat-number">0</div><div class="stat-label">לקוחות מרוצים מאושרים</div></div>
+  <div class="stat"><div class="stat-number">∞</div><div class="stat-label">ישיבות ללא מסקנה</div></div>
+  <div class="stat"><div class="stat-number">3</div><div class="stat-label">פרות שעברו לקבלה</div></div>
 </div>
-
-<section class="departments">
+<section class="departments" id="agafim">
   <div class="section-header">
-    <h2 class="section-title">האגפים הראשיים</h2>
-    <span class="section-note">58 פעילים · 182 בבנייה · מספר לא ידוע בתהום</span>
+    <h2 class="section-title">האגפים הפעילים</h2>
+    <span class="section-note">27 פעילים · מאות בבנייה · מספר לא ידוע בתהום</span>
   </div>
-
   <div class="dept-grid">
-    <a href="agafim/mishpat.html" class="dept-item featured">
-      <div class="dept-name">אגף משפט</div>
-      <div class="dept-desc">חוקים, ערעורים, וחוקים שבוטלו אבל עדיין מיושמים</div>
+    
+    <a href="agafim/arch_apayim.html" class="dept-item">
+      <div class="dept-name">אגף ארך אפיים</div>
+      <div class="dept-desc">אפים של מקובלים ואפים בכלל</div>
+    </a>
+    <a href="agafim/archpayim.html" class="dept-item">
+      <div class="dept-name">אגף ארכפיים</div>
+      <div class="dept-desc">הקשר המסתורי</div>
+    </a>
+    <a href="agafim/binuy.html" class="dept-item">
+      <div class="dept-name">אגף בנייה</div>
+      <div class="dept-desc">היתרים, צווי הריסה, וערעורים</div>
     </a>
     <a href="agafim/dat.html" class="dept-item">
       <div class="dept-name">אגף דת</div>
       <div class="dept-desc">דתות מאורגנות, לא מאורגנות, ושהתפזרו</div>
     </a>
+    <a href="agafim/garbaim.html" class="dept-item">
+      <div class="dept-name">אגף גרביים</div>
+      <div class="dept-desc">תואמות, לא תואמות, ומה שנאכל במכונה</div>
+    </a>
+    <a href="agafim/garbaim_shuavit.html" class="dept-item">
+      <div class="dept-name">אגף גרביים מלאות שעועית לבנה</div>
+      <div class="dept-desc">כולל דיאלוג בין הגרב לשעועית</div>
+    </a>
+    <a href="agafim/haarchat_hayim.html" class="dept-item">
+      <div class="dept-name">אגף הארכת חיים</div>
+      <div class="dept-desc">מה עושים עם כל השנים הנוספות</div>
+    </a>
+    <a href="agafim/hametz.html" class="dept-item">
+      <div class="dept-name">אגף חמץ</div>
+      <div class="dept-desc">לפני פסח, אחרי פסח, ומה שנמכר לגוי</div>
+    </a>
+    <a href="agafim/kabala.html" class="dept-item">
+      <div class="dept-name">אגף קבלה</div>
+      <div class="dept-desc">ספירות, שמני עיסוי, וספירה שאבדה</div>
+    </a>
+    <a href="agafim/kaki_parot.html" class="dept-item">
+      <div class="dept-name">אגף קקי של פרות שאכלו פירות שנפלו מהפולחן</div>
+      <div class="dept-desc">ניתוח ומסקנות</div>
+    </a>
+    <a href="agafim/kinneret.html" class="dept-item">
+      <div class="dept-name">אגף כינרת</div>
+      <div class="dept-desc">קיץ, חורף, מפלס, ומה שעדיף לא לדעת</div>
+    </a>
+    <a href="agafim/levush.html" class="dept-item">
+      <div class="dept-name">אגף לבוש</div>
+      <div class="dept-desc">מה ללבוש, חרטה, החלפה, חרטה שוב</div>
+    </a>
     <a href="agafim/madah.html" class="dept-item">
       <div class="dept-name">אגף מדע</div>
       <div class="dept-desc">מוכח, שנוי במחלוקת, ומה שהתברר שגוי</div>
     </a>
-    <a href="agafim/pizika.html" class="dept-item">
-      <div class="dept-name">אגף פיזיקה</div>
-      <div class="dept-desc">כבידה, אנטי-כבידה, וחתול שרדינגר שלא מחליט</div>
+    <a href="agafim/matza.html" class="dept-item">
+      <div class="dept-name">אגף מצה</div>
+      <div class="dept-desc">שמורה, רגילה, ופירורים בכל הבית</div>
     </a>
-    <a href="agafim/refua.html" class="dept-item">
-      <div class="dept-name">אגף רפואה</div>
-      <div class="dept-desc">תרופות שעובדות אבל לא לזה</div>
+    <a href="agafim/mishpat.html" class="dept-item">
+      <div class="dept-name">אגף משפט</div>
+      <div class="dept-desc">חוקים, ערעורים, וחוקים שבוטלו אבל עדיין מיושמים</div>
     </a>
-    <a href="agafim/haarchat-hayim.html" class="dept-item">
-      <div class="dept-name">אגף הארכת חיים</div>
-      <div class="dept-desc">מה עושים עם כל השנים הנוספות</div>
+    <a href="agafim/mitzraim_atid.html" class="dept-item">
+      <div class="dept-name">אגף מצרים העתידית</div>
+      <div class="dept-desc">פירמידות דיגיטליות וקללת הפרעון 2.0</div>
     </a>
-    <a href="agafim/psikiatria.html" class="dept-item">
-      <div class="dept-name">אגף פסיכיאטריה</div>
-      <div class="dept-desc">כולל פסיכיאטריה של הפסיכיאטרים עצמם</div>
+    <a href="agafim/mitzraim_atika.html" class="dept-item">
+      <div class="dept-name">אגף מצרים העתיקה</div>
+      <div class="dept-desc">פרעונים, פירמידות, וקללת הפרעון</div>
     </a>
-    <a href="#broken" class="dept-item broken">
-      <div class="dept-name">אגף חיפוש האנושות</div>
-      <div class="dept-desc">בתקלה זמנית</div>
+    <a href="agafim/musika.html" class="dept-item">
+      <div class="dept-name">אגף מוסיקה</div>
+      <div class="dept-desc">מרגיעה, מרגיזה, וממשיכה לנגן בראש</div>
     </a>
     <a href="agafim/parot.html" class="dept-item">
       <div class="dept-name">אגף הפרות</div>
       <div class="dept-desc">קדושות, טמאות, ירוקות, ושעברו לקבלה</div>
     </a>
-    <a href="agafim/kabala.html" class="dept-item featured">
-      <div class="dept-name">אגף קבלה</div>
-      <div class="dept-desc">כולל שמני עיסוי וספירות שאבדו</div>
+    <a href="agafim/pizika.html" class="dept-item">
+      <div class="dept-name">אגף פיזיקה</div>
+      <div class="dept-desc">כבידה, אנטי-כבידה, וחתול שרדינגר</div>
     </a>
-    <a href="agafim/mitzraim.html" class="dept-item">
-      <div class="dept-name">אגף מצרים העתיקה</div>
-      <div class="dept-desc">ופרות מצריות עתיקות</div>
+    <a href="agafim/poalim.html" class="dept-item">
+      <div class="dept-name">אגף פועלים</div>
+      <div class="dept-desc">שהגיעו, שלא הגיעו, ושעשו משהו אחר</div>
     </a>
-    <a href="agafim/mitzraim-atid.html" class="dept-item">
-      <div class="dept-name">אגף מצרים העתידית</div>
-      <div class="dept-desc">פירמידות דיגיטליות וקללת הפרעון 2.0</div>
+    <a href="agafim/refua.html" class="dept-item">
+      <div class="dept-name">אגף רפואה</div>
+      <div class="dept-desc">תרופות שעובדות אבל לא לזה</div>
     </a>
-    <a href="agafim/garbaim.html" class="dept-item">
-      <div class="dept-name">אגף גרביים</div>
-      <div class="dept-desc">תואמות, לא תואמות, ומה שנאכל במכונה</div>
+    <a href="agafim/shira.html" class="dept-item">
+      <div class="dept-name">אגף שירה בפידד</div>
+      <div class="dept-desc">שירה מכוונת, לא מכוונת, ופידד</div>
     </a>
-    <a href="agafim/garbaim-shuavit.html" class="dept-item">
-      <div class="dept-name">אגף גרביים מלאות שעועית לבנה</div>
-      <div class="dept-desc">כולל דיאלוג בין הגרב לשעועית</div>
+    <a href="agafim/trisim.html" class="dept-item">
+      <div class="dept-name">אגף תריסים שבורים</div>
+      <div class="dept-desc">מי אחראי — הדייר או הבניין</div>
     </a>
-    <a href="agafim/yamín.html" class="dept-item">
-      <div class="dept-name">אגף ימין</div>
-      <div class="dept-desc">מוביל לאגף שמאל</div>
+    <a href="agafim/tsilum.html" class="dept-item">
+      <div class="dept-name">אגף צילום</div>
+      <div class="dept-desc">טוב, גרוע, ומחוק בטעות</div>
     </a>
-    <a href="agafim/smol.html" class="dept-item">
-      <div class="dept-name">אגף שמאל</div>
-      <div class="dept-desc">מוביל לאגף ימין</div>
-    </a>
-    <a href="agafim/maala.html" class="dept-item">
-      <div class="dept-name">אגף מעלה</div>
-      <div class="dept-desc">מוביל לאגף מטה</div>
-    </a>
-    <a href="agafim/mata.html" class="dept-item">
-      <div class="dept-name">אגף מטה</div>
-      <div class="dept-desc">יש עוד מטה</div>
-    </a>
-    <a href="#broken" class="dept-item broken">
-      <div class="dept-name">אגף תיקון מצב רוח בצורה חוקית</div>
-      <div class="dept-desc">הבקשה ממתינה לאישור</div>
-    </a>
-    <a href="agafim/links.html" class="dept-item">
-      <div class="dept-name">אגף לינקים שבורים</div>
-      <div class="dept-desc">מדווח על תפקוד תקין</div>
-    </a>
-    <a href="agafim/404.html" class="dept-item broken">
-      <div class="dept-name">אגף שגיאה 404</div>
-      <div class="dept-desc">הדף לא נמצא</div>
-    </a>
-    <a href="agafim/klomion.html" class="dept-item featured">
-      <div class="dept-name">אגף כלומיון</div>
-      <div class="dept-desc">מה אנחנו בעצם עושים כאן</div>
+    <a href="agafim/video.html" class="dept-item">
+      <div class="dept-name">אגף וידאו</div>
+      <div class="dept-desc">צולם, לא היה צריך, ומה שקרה אחר כך</div>
     </a>
   </div>
 </section>
-
 <div class="mission">
-  <blockquote>
-    "אנחנו עוסקים בפתרון בעיות שעדיין לא הוגדרו,<br>
-    עבור לקוחות שעדיין לא זיהינו,<br>
-    בתקציב שעדיין לא אושר."
-  </blockquote>
+  <blockquote>"אנחנו עוסקים בפתרון בעיות שעדיין לא הוגדרו,<br>עבור לקוחות שעדיין לא זיהינו,<br>בתקציב שעדיין לא אושר."</blockquote>
   <cite>— ועדת הגדרת המטרה של כלומיון, ישיבה מספר 14 (לא הושלמה)</cite>
 </div>
-
 <section class="join">
   <div class="join-text">
     <h2>הצטרף לכלומיון</h2>
-    <p>אנחנו מחפשים אנשים שמוכנים לעבוד קשה על דברים שמטרתם לא ברורה לחלוטין. תקבל טיקטים אמיתיים, דיילי אמיתי, ופרודקשן שנופל בדיוק ביום חמישי.</p>
-    <p style="font-size: 13px; color: var(--muted);">תהליך הקבלה כולל שאלון היתולי, ראיון טכני, וועדת קבלה שאחת מחבריה תמיד חסרה.</p>
+    <p>אנחנו מחפשים אנשים שמוכנים לעבוד קשה על דברים שמטרתם לא ברורה לחלוטין.</p>
+    <p style="font-size:13px;color:var(--muted)">פרויקט וירטואלי ובידורי בלבד. אין הבטחה לתעסוקה, שכר, או כל תמורה אחרת.</p>
   </div>
   <form class="join-form" onsubmit="return false;">
-    <input type="text" placeholder="שם מלא (כפי שיופיע בטיקטים)" />
-    <input type="email" placeholder="אימייל (לא יועבר לאגף הפרטיות)" />
+    <input type="text" placeholder="שם מלא" />
+    <input type="email" placeholder="אימייל" />
     <select>
       <option value="">בחר אגף מועדף</option>
-      <option>אגף משפט</option>
       <option>אגף גרביים מלאות שעועית לבנה</option>
       <option>אגף חיפוש האנושות</option>
-      <option>אגף הפרות הירוקות</option>
+      <option>אגף קקי של פרות שאכלו פירות שנפלו מהפולחן</option>
       <option>אגף ארך אפיים</option>
       <option>אגף לא בטוח עדיין</option>
     </select>
-    <button type="submit" class="btn-primary" onclick="alert('המועמדות התקבלה. צוות גיוס יחזור אליך תוך 2-4 ספרינטים. בינתיים קרא את ויקיפדיה ההייטק.')">שלח מועמדות</button>
+    <button type="submit" class="btn-primary" onclick="alert('המועמדות התקבלה. נחזור אליך תוך 2-4 ספרינטים.')">שלח מועמדות</button>
   </form>
 </section>
-
 <footer>
-  <span>© כלומיון תשפ"ה — כל הזכויות שמורות לאגף הזכויות (בבנייה)</span>
-  <span>אגף הפרטיות · תנאי שימוש שאף אחד לא קרא · מפת אתר (שבורה)</span>
+  <span>© כלומיון תשפ"ה — אגף הזכויות (בבנייה)</span>
+  <span>פרויקט וירטואלי ובידורי בלבד</span>
 </footer>
-
 </body>
 </html>
